@@ -2,33 +2,38 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>hello phaser!</title>
+        <title>Phaser Prototype</title>
         <script src="js/phaser.min.js"></script>
+        <script src="js/Boot.js"></script>
+        <script src="js/Preloader.js"></script>
+        <script src="js/Game.js"></script>
     </head>
     <body>
+        <div id="gameContainer"></div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
+            window.onload = function() {
+                var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
+                game.state.add('Boot', BaseNamespace.Boot);
+                game.state.start('Boot');
 
-    window.onload = function() {
+                /*
+                var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {preload: preload, create: create, update: update});
+                var logo;
 
-        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {preload: preload, create: create, update: update});
-        var logo;
+                function preload() {
+                    game.load.image('logo', 'img/phaser.png');
+                }
 
-        function preload() {
-            game.load.image('logo', 'img/phaser.png');
-        }
+                function create() {
+                    logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+                    logo.anchor.setTo(0.5, 0.5);
+                }
 
-        function create() {
-            logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-            logo.anchor.setTo(0.5, 0.5);
-        }
-
-        function update() {
-            logo.angle--;
-        }
-    };
-
-    </script>
-
+                function update() {
+                    logo.angle--;
+                }*/
+            };
+        </script>
     </body>
 </html>
